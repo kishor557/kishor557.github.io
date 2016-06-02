@@ -1,4 +1,322 @@
-Hi, Welcome to my Github pages.
-<div>
-<a href="/blob/master/nested_hash.rb">Removing the empty key value pairs from the hash with empty values</a>
-</div>
+<!DOCTYPE html> 
+<!-- saved from url=(0043)http://getbootstrap.com/examples/jumbotron/ -->
+<html lang="en"><head>
+<script src="http://cdn.optimizely.com/js/1141215513.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+
+<title>Venkata Kishore @ Github</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="http://ibm.github.io/css/style.css" rel="stylesheet">
+
+<link rel="icon" href="http://ibm.github.io/favicon.ico" type="image/vnd.microsoft.icon" />
+</head>
+<body style="">
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://github.com/kishor557"><span class="dw-logo-d">Venkata Kishore M</span></a>
+      <a id="dw-nav" class="navbar-brand" style="float: right" href="https://github.com/kishor557" title="Designation">&nbsp;<span class="dw-logo-d">Team Lead</span><span class="dw-logo-W">(Ruby on Rails)</span></a>
+      <div class="navbar-header">
+      </div>
+    </div>
+  </div>
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Open Source Pages</h1>
+      <div class="leadspace-buttons">
+
+        </div>
+      </div>
+    </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+             <div id="wrapper">
+<!--              <label for="search" class="col-lg-4 control-label search" style=""><span>Search</span> <input type="search" id="search" class="search-query span3 filter input-medium" placeholder="Our Repos..."></label>-->
+<!--              -->
+<!--              <div id="repos" class="columns collapse-group">-->
+<!--               -->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <p>© Venkata Kishore M</p>
+    </div>
+  </footer>
+</div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://ibm.github.io/js/jquery.js"></script>
+    <script src="http://ibm.github.io/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ibm.github.io/js/strftime.js"></script>
+    <script type="text/javascript" src="http://ibm.github.io/orgs.js"></script>
+    <script type="text/javascript">
+    var orgs = [{name: "kishor557", type: "user"}];
+    var updated = [];
+    var allrepos = [];
+    var allpages = [];
+    
+    // go to http://thissite.example.com/#DEBUG to set DEBUG=true
+    var DEBUG = (window.location.hash === '#DEBUG');
+    
+    (function ($, undefined) {
+    	
+      var repoUrls = {
+      };
+      function repoUrl(repo) {
+        return repoUrls[repo.name] || repo.html_url;
+      }   
+      
+      function repoDescription(repo) {
+        desc = repo.description;
+        return desc;
+      }
+      
+      function addUpdated()
+      {
+      	$("#updated").empty();
+      	for (r=0; r < Math.min(4, updated.length); r++)
+      	{
+      		repo = updated[r];
+          desc = repoDescription(repo);
+          var $uitem = $("<div>").addClass("updated-card col-sm-5 col-md-4 col-lg-3");
+          var $item = $("<div>").addClass("card pin " + (repo.language || '').toLowerCase() + " "+repo.name.toLowerCase());
+          var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+          $link.append($("<h4>").text(repo.name));
+          $link.append($("<h5>").text((repo.language != null) ? repo.language : ""));
+          $item.append($("<p>").text(desc));
+          $item.appendTo($uitem);
+          $uitem.appendTo("#updated");
+        }
+        
+        var d = $("#updated").collapse({
+         toggle: true
+       });
+      }
+      
+      function addPages()
+      {
+      	$("#allpages").empty();
+      	for (r=0; r < Math.min(4, allpages.length); r++)
+      	{
+      		repo = allpages[r];
+          desc = repoDescription(repo);
+          var $uitem = $("<div>").addClass("updated-card col-sm-5 col-md-4 col-lg-3");
+          var $item = $("<div>").addClass("card pin " + (repo.language || '').toLowerCase() + " "+repo.name.toLowerCase());
+          var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+          $link.append($("<h4>").text(repo.name));
+          $link.append($("<h5>").text((repo.language != null) ? repo.language : ""));
+          $item.append($("<p>").text(desc));
+          $item.appendTo($uitem);
+          $uitem.appendTo("#allpages");
+        }
+        $("#allpages").prev().find(".nrepos").text("("+allpages.length+")");
+        var d = $("#allpages").collapse({
+         toggle: true
+       });
+      }
+      
+      function addAllRepos()
+      {
+      	$("#allrepos").empty();
+      	
+      	for (r=0; r < allrepos.length; r++)
+      	{
+      		repo = allrepos[r];
+          desc = repoDescription(repo);
+          var $item = $("<div>").addClass("card pin col-sm-5 col-md-4 col-lg-3 " + (repo.language || '').toLowerCase() + " "+repo.name.toLowerCase());
+          var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+          $link.append($("<h4>").html(repo.name + "<div class='org'><a href='"+repo.owner.html_url+"'>("+repo.owner.login+")"));
+          $link.append($("<h5>").text((repo.language != null) ? repo.language : ""));
+          $item.append($("<p>").text(desc));
+          htag = "#allrepos";
+          $item.appendTo(htag);
+        }
+        
+        $(".nrepos").text("("+allrepos.length+")");
+        
+        var d = $("#allrepos").collapse({
+         toggle: true
+       });
+        
+      }
+      function pushRepo(repos, org) 
+      {
+      	var left = repos; var right = allrepos;
+        var result  = [],
+        il      = 0,
+        ir      = 0;
+        
+        while (il < left.length && ir < right.length){
+         if (left[il].name.toLowerCase() < right[ir].name.toLowerCase()){
+           result.push(left[il++]);
+         } else {
+           result.push(right[ir++]);
+         }
+       }
+       
+       allrepos = result.concat(left.slice(il)).concat(right.slice(ir));
+     }      
+     
+     function mergeUpdated(repos)
+     {
+       var left = repos; var right = updated;
+       var result  = [],
+       il      = 0,
+       ir      = 0;
+       
+       while (il < left.length && ir < right.length){
+        if (left[il].pushed_at > right[ir].pushed_at){
+          result.push(left[il++]);
+        } else {
+          result.push(right[ir++]);
+        }
+      }
+      
+      updated = result.concat(left.slice(il)).concat(right.slice(ir));
+    }
+    
+    function addRepos(orgs, repos, page) {
+     var forks = [];
+     var org = orgs.name;
+     repos = repos || [];
+     page = page || 1;
+
+       var uri = "https://api.github.com/users/kishor557/repos?per_page=1000"
+       $.getJSON(uri, function (result) {
+         if (!Array.isArray(result)) {
+           result = [].concat(result);
+         }
+         if (result && result.length > 0) {
+          repos = repos.concat(result);
+          $(function () {
+            $.each(repos, function (i, repo) {
+              repo.pushed_at = new Date(repo.pushed_at);
+              if (repo.fork === true) {  // if this is a fork, save the index
+                forks.push(i);
+              }
+            });
+            // remove forks from the view
+            $.each(forks, function(i, forkindex) {
+              var indextoremove = forkindex - i; // account for prior splices
+              if(DEBUG) console.log('removing forked entry: ' + repos[indextoremove].full_name);
+              repos.splice(indextoremove,1);
+            });
+		// pre sort by how recently the repo was modified
+        repos.sort(function (a, b) {
+          if (a.pushed_at < b.pushed_at) return 1;
+          if (b.pushed_at < a.pushed_at) return -1;
+          return 0;
+        });
+        mergeUpdated(repos);
+        repos.sort(function (a, b) {
+          if (a.name.toLowerCase() > b.name.toLowerCase()) {return 1;}
+          if (b.name.toLowerCase() > a.name.toLowerCase()) {return -1};
+          return 0;
+        });
+        pushRepo(repos, org);
+        addUpdated();
+        addAllRepos();
+        addPages();
+      });
+        }
+      });
+     }
+     
+     $("<div>").addClass("separator").appendTo("#wrapper");
+     var $sectiontitle = $("<div>").addClass("section-title").appendTo("#wrapper");
+     var $title = $("<span>").addClass('title').text("recent").appendTo($sectiontitle);
+     var $item = $("<div id='updated'>").addClass("columns section collapse");
+     $item.appendTo($sectiontitle);
+     var $twistie = $("<a data-toggle='collapse' data-target='#updated'>").addClass("twistie showdetails");
+     $twistie.appendTo($sectiontitle);
+     $("<div>").addClass("separator gap").appendTo("#wrapper");
+     var $sectiontitle = $("<div>").addClass("section-title").appendTo("#wrapper");
+     var $title = $("<span>").addClass('title').text("repos").appendTo($sectiontitle);
+     var $repos = $("<span>").addClass('nrepos').text("(0)").appendTo($title);
+     var $item = $("<div id='allrepos'>").addClass("columns section collapse");
+     $item.appendTo($sectiontitle);
+     var $twistie = $("<a data-toggle='collapse' data-target='#allrepos'>").addClass("twistie showdetails");
+     $twistie.appendTo($sectiontitle);
+     $("<div>").addClass("separator gap").appendTo("#wrapper");
+     var $sectiontitle = $("<div>").addClass("section-title").appendTo("#wrapper");
+     var $title = $("<span>").addClass('title').text("pages").appendTo($sectiontitle);
+     var $repos = $("<span>").addClass('nrepos').text("(0)").appendTo($title);
+     var $item = $("<div id='allpages'>").addClass("columns section collapse");
+     $item.appendTo($sectiontitle);
+     var $twistie = $("<a data-toggle='collapse' data-target='#allpages'>").addClass("twistie showdetails");
+     console.log(orgs);
+     for (var r in orgs)
+     {
+      addRepos(orgs[r]);
+    }
+    
+    
+    $("<div>").addClass("separator").appendTo("#wrapper");
+    
+  })(jQuery);
+ /* 
+  $('#search').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+    $rows = $(".card")
+    $rows.show().filter(function() {
+      var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+      return !~text.indexOf(val);
+    }).hide();
+    
+    // update repo count here
+    n = $rows.length;
+    for (r in $rows)
+    {
+    	row = $rows[r];
+    	style = row.style;
+    	if (style && style.cssText && style.cssText.match("none"))
+    	{
+    		n--;
+    	}
+    }
+    
+    $rows = $(".updated-card");
+    $rows.show().filter(function() {
+      var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+      return !~text.indexOf(val);
+    }).hide();
+    
+    m = 4;
+    for (r in $rows)
+    {
+    	row = $rows[r];
+    	style = row.style;
+    	if (style && style.cssText && style.cssText.match("none"))
+    	{
+    		m--;
+    	}
+    }
+    
+    $(".nrepos").text("("+(n - m)+")");
+    
+    
+});*/
+</script>
+<!--https://api.github.com/orgs/watson-developer-cloud/repos?per_page=1000&client_id=1bafa09b6086eec7afb4&client_secret=7e6422a0a2e24f0d0ecb7521a63990b5758c9cc8-->
+<!--https://api.github.com/users/kishor557/repos-->
+</body></html>
