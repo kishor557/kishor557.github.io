@@ -100,7 +100,7 @@
           desc = repoDescription(repo);
           var $uitem = $("<div>").addClass("updated-card col-sm-5 col-md-4 col-lg-3");
           var $item = $("<div>").addClass("card pin " + (repo.language || '').toLowerCase() + " "+repo.name.toLowerCase());
-          var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+          var $link = $("<a>").attr("href", repoUrl(repo)).attr("target", "_blank").appendTo($item);
           $link.append($("<h4>").text(repo.name));
           $link.append($("<h5>").text((repo.language != null) ? repo.language : ""));
           $item.append($("<p>").text(desc));
@@ -122,7 +122,7 @@
           desc = repoDescription(repo);
           var $uitem = $("<div>").addClass("updated-card col-sm-5 col-md-4 col-lg-3");
           var $item = $("<div>").addClass("card pin " + (repo.language || '').toLowerCase() + " "+repo.name.toLowerCase());
-          var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+          var $link = $("<a>").attr("href", repoUrl(repo)).attr("target", "_blank").appendTo($item);
           $link.append($("<h4>").text(repo.name));
           $link.append($("<h5>").text((repo.language != null) ? repo.language : ""));
           $item.append($("<p>").text(desc));
@@ -144,7 +144,7 @@
       		repo = allrepos[r];
           desc = repoDescription(repo);
           var $item = $("<div>").addClass("card pin col-sm-5 col-md-4 col-lg-3 " + (repo.language || '').toLowerCase() + " "+repo.name.toLowerCase());
-          var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+          var $link = $("<a>").attr("href", repoUrl(repo)).attr("target", "_blank").appendTo($item);
           $link.append($("<h4>").html(repo.name + "<div class='org'><a href='"+repo.owner.html_url+"'>("+repo.owner.login+")"));
           $link.append($("<h5>").text((repo.language != null) ? repo.language : ""));
           $item.append($("<p>").text(desc));

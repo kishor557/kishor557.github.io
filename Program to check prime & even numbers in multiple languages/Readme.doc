@@ -1,0 +1,15 @@
+Steps to compile and run the programs
+
+## Ruby
+ruby number.rb
+
+## C
+gcc number.c -o number
+./number
+
+## Python
+python number.py
+
+## Java
+javac Number.java
+java Number
