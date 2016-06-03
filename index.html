@@ -68,7 +68,7 @@
     <script src="http://ibm.github.io/js/jquery.js"></script>
     <script src="http://ibm.github.io/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://ibm.github.io/js/strftime.js"></script>
-    <script type="text/javascript" src="http://ibm.github.io/orgs.js"></script>
+<!--    <script type="text/javascript" src="http://ibm.github.io/orgs.js"></script>-->
     <script type="text/javascript">
     var orgs = [{name: "kishor557", type: "user"}];
     var updated = [];
@@ -113,23 +113,40 @@
        });
       }
       
-      function addPages()
+      function addPages(pages)
       {
       	$("#allpages").empty();
-      	for (r=0; r < Math.min(4, allpages.length); r++)
+      	console.log(pages.length);
+      	var allpages = [];
+      	for (r=0; r < pages.length; r++)
       	{
-      		repo = allpages[r];
-          desc = repoDescription(repo);
+      		page = pages[r];
+          desc = page.name.split(".");
+          if (page.type == "dir") {
+            allpages.push(page);
+          }else if (page.type == "file") {
+            if (Array.isArray(desc)) {
+              if (desc[1] != "md") {
+                 allpages.push(page);
+                 page = pages[r];
+              }
+            }
+          }
+        }
+        for (r=0; r < allpages.length; r++)
+      	{  
+          page = allpages[r];
+          desc = page.name.split(".")[1];
           var $uitem = $("<div>").addClass("updated-card col-sm-5 col-md-4 col-lg-3");
-          var $item = $("<div>").addClass("card pin " + (repo.language || '').toLowerCase() + " "+repo.name.toLowerCase());
-          var $link = $("<a>").attr("href", repoUrl(repo)).attr("target", "_blank").appendTo($item);
-          $link.append($("<h4>").text(repo.name));
-          $link.append($("<h5>").text((repo.language != null) ? repo.language : ""));
+          var $item = $("<div>").addClass("card pin " + (desc || '').toLowerCase() + " "+page.name.toLowerCase());
+          var $link = $("<a>").attr("href", page.html_url).attr("target", "_blank").appendTo($item);
+          $link.append($("<h4>").text(page.name));
+          $link.append($("<h5>").text((desc != null) ? desc : "Dir"));
           $item.append($("<p>").text(desc));
           $item.appendTo($uitem);
-          $uitem.appendTo("#allpages");
+          $uitem.appendTo("#allpages");          
         }
-        $("#allpages").prev().find(".nrepos").text("("+allpages.length+")");
+       $("#allpages").prev().find(".nrepos").text("("+allpages.length+")");
         var d = $("#allpages").collapse({
          toggle: true
        });
@@ -194,6 +211,21 @@
       
       updated = result.concat(left.slice(il)).concat(right.slice(ir));
     }
+
+    function addFiles(allpages) {
+       var uri = "https://api.github.com/repos/kishor557/kishor557.github.io/contents"
+       $.getJSON(uri, function (result) {
+         if (!Array.isArray(result)) {
+           result = [].concat(result);
+         }
+         if (result && result.length > 0) {
+          allpages = allpages.concat(result);
+          console.log(allpages);
+         }
+         console.log(allpages);
+         addPages(allpages);
+       });
+    }
     
     function addRepos(orgs, repos, page) {
      var forks = [];
@@ -236,7 +268,7 @@
         pushRepo(repos, org);
         addUpdated();
         addAllRepos();
-        addPages();
+        //addPages();
       });
         }
       });
@@ -264,11 +296,11 @@
      var $item = $("<div id='allpages'>").addClass("columns section collapse");
      $item.appendTo($sectiontitle);
      var $twistie = $("<a data-toggle='collapse' data-target='#allpages'>").addClass("twistie showdetails");
-     console.log(orgs);
      for (var r in orgs)
      {
       addRepos(orgs[r]);
-    }
+     }
+     addFiles(allpages);
     
     
     $("<div>").addClass("separator").appendTo("#wrapper");
