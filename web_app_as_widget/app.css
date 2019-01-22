@@ -1,0 +1,19 @@
+#my_widget_div {
+
+}
+#my_widget_div a {
+  color: #fff !important;
+  text-decoration: none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 35px;
+  display: inline-block;
+  background: rgb(66, 82, 110);
+  padding: 10px 15px;    
+          transition: width 2s;
+  -webkit-transition: width 2s;  
+}
+#my_widget_div a:hover {
+  width: 100px;
+}
