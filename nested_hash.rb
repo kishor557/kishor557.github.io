@@ -7,3 +7,8 @@ h.delete_if { |k, v| v.values.reject(&:empty?).empty? }
 #h.delete_if { |k, v| v.values.reject(&:empty?).length == 0 }
 
 puts h.inspect
+
+
+
+
+
