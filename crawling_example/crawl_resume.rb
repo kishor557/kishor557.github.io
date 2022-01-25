@@ -56,5 +56,5 @@ class CrawlResume
   
 end
 
-r = CrawlResume.parse("/home/srinivas/Downloads/Zoe_Rawlings__Resume.pdf.txt")
+r = CrawlResume.parse("/home/srinivas/Downloads/Profile.pdf.txt")
 puts "\n\n.....#{r.inspect}..\n"

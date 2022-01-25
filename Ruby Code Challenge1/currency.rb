@@ -1,5 +1,7 @@
 ## ruby currency.rb
+require 'benchmark'  
 
+puts Benchmark.measure {
 # we can change the key & value pairs
 CURRENCY = { quarters: 25, dimes: 10, nickels: 5, pennies: 1 }
 
@@ -43,4 +45,5 @@ rescue => err
   # retry the operation in case of negative input 
   retry
 end
+}
 

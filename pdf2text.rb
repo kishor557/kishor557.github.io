@@ -4,7 +4,7 @@ require 'pdf/reader' # gem install pdf-reader
 # credits to :
 # 	https://github.com/yob/pdf-reader/blob/master/examples/text.rb
 # usage example: 
-# 	ruby pdf2txt.rb /path-to-file/file1.pdf [/path-to-file/file2.pdf..]
+# 	ruby pdf2text.rb /path-to-file/file1.pdf [/path-to-file/file2.pdf..]
 ARGV.each do |filename|
 
 	PDF::Reader.open(filename) do |reader|

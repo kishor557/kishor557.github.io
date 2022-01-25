@@ -1,4 +1,5 @@
 require 'active_support/inflector'
+require 'benchmark'  
 
 class CurrencyChange
 
@@ -10,7 +11,7 @@ class CurrencyChange
               "penny"   => 1
              }
 
-  # initializer method
+  # initializer method  
   def initialize
     @h = Hash.new(0)
     @i = 0
@@ -45,5 +46,7 @@ class CurrencyChange
 
 end
 
+puts Benchmark.measure {
 # create an object for the class
 a = CurrencyChange.new
+}
