@@ -1,0 +1,15 @@
+%p
+  %b Name:
+  = @task.name 
+
+%p
+  %b CreatedAt:
+  = @task.created_at 
+
+%p
+  %b Is Done:
+  = @task.is_done
+
+%div
+  = link_to "<< Back to tasks", tasks_path
+  

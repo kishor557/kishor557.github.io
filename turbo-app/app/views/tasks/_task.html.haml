@@ -1,0 +1,10 @@
+= turbo_frame_tag task do
+  .task.row.item
+    .col-md-1
+      = check_box_tag :is_done, nil, task.is_done, class: 'form-check-input disabled'
+    .col-md-8
+      = link_to task.name, task, data: { turbo_frame: "_top" }
+    .col-md-3.text-end
+      .quote_actions
+        = link_to "Edit", edit_task_path(task), class: 'btn btn-sm btn-primary'
+        = link_to "Destroy", task, data: { turbo_method: :delete, turbo_confirm: "Are you sure?", turbo_frame: "_top" }, class: 'btn btn-sm btn-danger'

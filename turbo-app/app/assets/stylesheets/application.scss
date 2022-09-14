@@ -1,0 +1,118 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+ @import "bootstrap";
+
+body#app {
+  background: #563d7c;
+  color: #563d7c;
+  
+  a {
+    color: #563d7c;
+    text-decoration: none;
+    
+    &:hover {
+      color: #563d7c;
+    }
+  }
+  
+  a.btn {
+    color: #fff !important;
+  }
+}
+
+.main {
+  .main-content {
+    padding: 0 10px;
+  }
+
+  .header {
+    padding: 20px 10px;
+    box-shadow: 1px 1px 8px #ccc;
+    background: #fff;
+    
+    h4 {
+      position: absolute;
+      margin-bottom: 0px;
+      margin-top: 5px;
+    }
+  }
+  
+  .content {
+    background: #fff;
+    margin: 20px 0;
+  }
+  
+  #tasks {
+    turbo-frame {
+      #edit_item {
+        border: 1px solid #ccc;
+        border-top: 0px;
+        padding: 10px;
+      }
+      
+      .item {
+        border: 1px solid #ccc;
+        border-top: 0px;
+      }
+    
+      .task {
+        padding: 13px 0px;
+        margin: 0;
+        
+        .quote_actions {
+          font-size: 12px;
+        }
+      }
+    }
+    turbo-frame:nth-of-type(1) {
+      #edit_item {
+        border-top: 1px solid #ccc;
+      }
+      .item {
+        border-top: 1px solid #ccc;
+      }
+    }
+  }
+  
+  #new_task_frame {
+    #new_item {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  }
+  
+  
+  span.error {
+    font-size: 11px;
+    color: red;
+  }
+  .field_with_errors {
+    input, textarea {
+      border-color: red;
+    }
+  }
+}
+
+.form-control {
+  color: #563d7c;
+  font-size: 13px;
+}
+
+.disabled{
+  pointer-events: none;
+  cursor: not-allowed;
+ }

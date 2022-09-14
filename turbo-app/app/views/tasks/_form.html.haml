@@ -1,0 +1,13 @@
+.task
+  = form_with(model: task, class: 'row') do |form|
+    .col-md-1
+      = form.check_box :is_done, class: 'form-check-input'
+    .col-md-8
+      = form.text_area :name, rows: '2', class: 'form-control'
+      - if task.errors.any?
+        %span.error
+          = task.errors.first.full_message      
+    .col-md-3.text-end
+      = form.submit 'Save', class: 'btn btn-sm btn-primary'
+      = link_to 'Cancel', tasks_path, class: 'btn btn-sm btn-danger'
+
